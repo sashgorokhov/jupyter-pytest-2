@@ -13,7 +13,7 @@ setup(
     description='Write and run pytest tests inside a notebook! Why? Because you can!',
     download_url='https://github.com/sashgorokhov/jupyter-pytest-2/archive/master.zip',
     entry_points={'pytest11': ['jupyter_pytest = jupyter_pytest']},
-    install_requires=['pytest', 'notebook'],
+    install_requires=['pytest >= 5.0', 'notebook >= 6.0'],
     keywords=['pytest', 'ipython', 'jupyter', 'testing'],
     license='MIT License',
     name='jupyter-pytest-2',
