@@ -5,6 +5,13 @@ This small pytest plugin allows it to discover and run tests written inside ipyt
 
 There may be memory leaks, but i did not bother testing it.
 
+> You can not run pytest itself and give it a notebook, like 
+> 
+> ```shell
+> pytest example.ipynb
+> ```
+> This will not work.
+
 ##### But why??!!1
 
 I wrote this plugin to write data quality tests in databricks platform.
@@ -20,7 +27,7 @@ Example notebook
 ----------------
 https://github.com/sashgorokhov/jupyter-pytest-2/blob/master/example.ipynb
 
-Example
+Usage
 -------
 
 Install the plugin, copypaste this into the notebook cell and run:
@@ -59,5 +66,11 @@ def test_foo(foo):
 pytest.main(args=['-sv'])
 
 ```
+
+### Usage notes
+
+1. Plugin will discover only tests, fixtures and data in cells which were run in the current kernel scope. If you restart kernel, or load a notebook, you need to re-run cells with test related stuff.
+
+2. If you write some tests, execute a cell, and then remove or rename that test, this test will remain in global scope and will be found & executed by plugin. This can lead to an unexpected things, even harming ones. When renaming or removing test or fixture, also restart the kernel.
 
 Enjoy!
